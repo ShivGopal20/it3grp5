@@ -52,22 +52,7 @@ public class SQL {
 
 
 
-    // metode til at skrive data i databsen
-    public void insertIntoTable(String CPR, double EKGdata) {
-        Timestamp tid = Timestamp.from(Instant.now());
 
-        //læg data i skema
-        String SQL = "insert into maalinger (CPR,EKGMeasure,Time) values(?,?,?);";
-        try {
-            preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setString(1, CPR);
-            preparedStatement.setDouble(2, EKGdata);
-            preparedStatement.setTimestamp(3, tid);
-            preparedStatement.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
 
 
 
