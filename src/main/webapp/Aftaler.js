@@ -83,11 +83,11 @@ async function opretGiraf(form1){
     let formData = new FormData(KTform)
     let patientJson = Object.fromEntries(formData);
     let res = await fetch("/it3grp5_war/rest/Aftaler", {
-        method:"POST",
+        method: "POST",
         body: JSON.stringify(patientJson),
-        headers:{
-            'content-type':"application/json"
-        }
+        headers: {
+            'content-type': "application/json"
+          }
     })
     alert (res);
     await hentGiraffer();
