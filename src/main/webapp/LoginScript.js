@@ -1,5 +1,5 @@
 function Store(){
-    var Bruger = document.getElementById("InputBrugernavn").value;
+    let Bruger = document.getElementById("InputBrugernavn").value;
     sessionStorage.setItem("Godkendt_Bruger", Bruger);
 }
 

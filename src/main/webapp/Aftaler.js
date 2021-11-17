@@ -1,14 +1,9 @@
-
-
-let aftaleString="hej med dig, hvordan går det1234"
-
-
 BrugerFremvsinging();
-let i = 1;
+var i = 1;
 let json;
 
 function BrugerFremvsinging() {
-    Bruger = sessionStorage.getItem("Godkendt_Bruger");
+    let Bruger = sessionStorage.getItem("Godkendt_Bruger");
     document.getElementById("Bruger").innerHTML = Bruger;
 }
 
