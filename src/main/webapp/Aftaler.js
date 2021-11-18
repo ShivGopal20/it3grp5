@@ -1,9 +1,14 @@
+
+
+let aftaleString="hej med dig, hvordan går det1234"
+
+
 BrugerFremvsinging();
-var i = 1;
+let i = 1;
 let json;
 
 function BrugerFremvsinging() {
-    let Bruger = sessionStorage.getItem("Godkendt_Bruger");
+    Bruger = sessionStorage.getItem("Godkendt_Bruger");
     document.getElementById("Bruger").innerHTML = Bruger;
 }
 
@@ -73,41 +78,44 @@ function KonsultationsUdfyldning(){
     Notat.appendChild(TextArea)
     TextArea.id="Notat"+i
 }
-async function opretGiraf(form1){
+
+async function opretPatient(form1){
     let KTform = document.getElementById(form1)
     let formData = new FormData(KTform)
     let patientJson = Object.fromEntries(formData);
     let res = await fetch("/it3grp5_war/rest/Aftaler", {
-        method: "POST",
+        method:"POST",
         body: JSON.stringify(patientJson),
-        headers: {
-            'content-type': "application/json"
-          }
+        headers:{
+            'content-type':"application/json"
+        }
     })
-    alert (res);
-    await hentGiraffer();
+
+    //alert (res);
+    await hentPatienter();
+
 }
 
 
-async function hentGiraffer(){
+async function hentPatienter(){
     let result = await fetch("http://localhost:8080/it3grp5_war/rest/Aftaler");
     console.log(result.status)
     if (result.status!=200){
-        alert("noget gik galt!");
+        //alert("noget gik galt!");
     }
     let json = await result.json();
     console.log(json)
-    updateGiraffes(json)
+    updatePatienter(json)
 
 }
 
-function updateGiraffes(json) {
+function updatePatienter(json) {
     let listelements =""
     json.forEach(function(element){
         listelements += ("<li>"+element.name+"</li>")
     })
 
-    let girafList = document.getElementById("giraffer");
-    girafList.innerHTML=listelements
+    let patientList = document.getElementById("Patient");
+    patientList.innerHTML=listelements
 }
 

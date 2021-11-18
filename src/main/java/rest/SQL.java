@@ -4,7 +4,7 @@ import java.sql.*;
 import java.time.Instant;
 
 public class SQL {
-    int tidstæller = 1;
+
     String Brugernavn;
     String Adgangskode;
     String CPR;
@@ -52,7 +52,22 @@ public class SQL {
 
 
 
+    // metode til at skrive data i databsen
+    public void insertIntoTable(String CPR, double EKGdata) {
+        Timestamp tid = Timestamp.from(Instant.now());
 
+        //læg data i skema
+        String SQL = "insert into maalinger (CPR,EKGMeasure,Time) values(?,?,?);";
+        try {
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, CPR);
+            preparedStatement.setDouble(2, EKGdata);
+            preparedStatement.setTimestamp(3, tid);
+            preparedStatement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 
 
@@ -75,7 +90,7 @@ public class SQL {
         }
         return Brugernavn;
     }
-
+/*
     public String retrieveAftale(int ID) {
         getSQLConnection();
         String query1 = "SELECT * FROM laegedatabasen.patient where ID=" + ID + ";";
@@ -95,21 +110,12 @@ public class SQL {
             throwables.printStackTrace();
         }
 
+
+
         return query1;
     }
 
-
-
-    // stop forbindelsen til databasen
-    public void stopSQLConnection() {
-        try {
-            if (!connection.isClosed()) {
-                connection.close();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+ */
 
 
 

@@ -5,9 +5,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/AftalerOgKonsultation.css">
 
 
-
 <head>
-    <script src="Aftaler.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
             rel="stylesheet"
@@ -67,7 +65,7 @@
         <p>&nbsp;</p>
 
         <p class="Aftale-tekst" >Sundhedspersonale</p>
-        <form id="SPform"> <input class="Aftale-oprettelse" type="text" id="SP" name="name dato startTidspunkt" required> </form>
+        <form id="SPform"> <input class="Aftale-oprettelse" type="text" id="SP" name="name" required> </form>
 
     <p>&nbsp;</p>
 
@@ -99,13 +97,13 @@
 
     <input class="Aftaler-knapper" type="button" value="  Tilføj aftale  " onclick="AftaleOprettelse()">
     <input class="Aftaler-knapper" type="button" value="  Opdater  "onclick="
-
-    opretGiraf('SPform')
-    opretGiraf('Datoform')
-    opretGiraf('Starttidform')
-    opretGiraf('Sluttidform')
-    opretGiraf('CPRform')
-    opretGiraf('Notatform');">
+    opretPatient('aftale')
+    opretPatient('SPform')
+    opretPatient('Datoform')
+    opretPatient('Starttidform')
+    opretPatient('Sluttidform')
+    opretPatient('CPRform')
+    opretPatient('Notatform');">
 
     </form>
 </div>
@@ -139,5 +137,5 @@
 </section>
 
 </body>
-
+<script src="Aftaler.js"></script>
 </html>
