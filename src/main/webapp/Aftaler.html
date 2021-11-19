@@ -59,53 +59,49 @@
     <div class="left-half">
 
 <div>
-    <form>
-    <p class="Aftale-tekst">Bruger ID <form id="Brugerform"><p id="Bruger">---</p></form></p>
+    <form id="tabledata">
+    <p class="Aftale-tekst">Bruger ID <p id="Bruger">---</p></p>
 
         <p>&nbsp;</p>
 
         <p class="Aftale-tekst" >Sundhedspersonale</p>
-        <form id="SPform"> <input class="Aftale-oprettelse" type="text" id="SP" name="name" required> </form>
+         <input class="Aftale-oprettelse" type="text" id="SP" name="name" required>
 
     <p>&nbsp;</p>
 
     <p class="Aftale-tekst" >Dato</p>
-        <form id="Datoform"> <input name="dato" class="Aftale-oprettelse" type="date" id="dato"
-           min="2018-01-01" max="2023-12-31" required> </form>
+    <input name="dato" class="Aftale-oprettelse" type="date" id="dato"
+           min="2018-01-01" max="2023-12-31" required>
 
     <p>&nbsp;</p>
 
     <p class="Aftale-tekst" >Starttid</p>
-        <form id="Starttidform"> <input name="startTidspunkt" class="Aftale-oprettelse" type="time" id="tid_fra" required> </form>
+         <input name="startTidspunkt" class="Aftale-oprettelse" type="time" id="tid_fra" required>
 
     <p>&nbsp;</p>
 
     <p class="Aftale-tekst" >Sluttid</p>
-        <form id="Sluttidform"> <input name="slutTidspunkt" class="Aftale-oprettelse" type="time" id="tid_til" required> </form>
+  <input name="slutTidspunkt" class="Aftale-oprettelse" type="time" id="tid_til" required>
 
     <p>&nbsp;</p>
 
     <p class="Aftale-tekst" >Patient (CPR)</p>
-        <form id="CPRform">  <input name="CPR" class="Aftale-oprettelse" type="text" id="CPR" required> </form>
+      <input name="CPR" class="Aftale-oprettelse" type="text" id="CPR" required>
 
     <p>&nbsp;</p>
 
     <p class="Aftale-tekst" >Notat</p>
-        <form id="Notatform"> <textarea name="notater" class="Aftale-oprettelse" type="text" id="Notat" ></textarea> </form>
+      <textarea name="notater" class="Aftale-oprettelse" type="text" id="Notat" ></textarea>
 
         <p>&nbsp;</p>
 
     <input class="Aftaler-knapper" type="button" value="  Tilføj aftale  " onclick="AftaleOprettelse()">
     <input class="Aftaler-knapper" type="button" value="  Opdater  "onclick="
-    opretPatient('aftale')
-    opretPatient('SPform')
-    opretPatient('Datoform')
-    opretPatient('Starttidform')
-    opretPatient('Sluttidform')
-    opretPatient('CPRform')
-    opretPatient('Notatform');">
+
+    opretPatient('tabledata');">
 
     </form>
+
 </div>
 
     </div>
