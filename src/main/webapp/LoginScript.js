@@ -6,7 +6,7 @@ function Store(){
 function LoginValidation() {
     let navn = document.getElementById("InputBrugernavn").value;
     let kode = document.getElementById("InputKode").value;
-    fetch("http://localhost:8080/it3grp5_war/rest/Login?" + new URLSearchParams({
+    fetch("rest/Login?" + new URLSearchParams({
         InputKode: kode, InputBrugernavn: navn}
     )).then(resp => {
         if (resp.status!==200){
