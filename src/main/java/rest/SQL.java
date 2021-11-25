@@ -136,6 +136,7 @@ public class SQL {
         //    System.out.println("CPR eksisterer allerede i systemet.");
         }
 
+
         return write_to_database1;
     }
 
