@@ -30,10 +30,10 @@ public class SQL {
     private ResultSet resultSet;
 
     // indstillinger, valg af database
-    static String username = "bruger1";
-    static String password = "kode1";
-    static String Schema = "laegedatabasen";
-    static String url = "jdbc:mysql://localhost:3306/" + Schema;
+    static String username = "s194054";
+    static String password = "EkqheiOgMCjZd9VWrMtts";
+    static String Schema = "s194054";
+    static String url = "jdbc:mysql://mysql-db.caprover.diplomportal.dk/" + Schema;
 
 
     public void getSQLConnection() {
@@ -76,7 +76,7 @@ public class SQL {
     // metode til at hente Logindata fra tabel
     public String getLoginInfo(int ID) {
         getSQLConnection();
-        String query1 = "SELECT * FROM laegedatabasen.brugerliste where ID=" + ID + ";";
+        String query1 = "SELECT * FROM s194054.brugerliste where ID=" + ID + ";";
         try {
             resultSet = statement.executeQuery(query1);
             resultSet.next();
@@ -121,7 +121,7 @@ public class SQL {
 
     public String opretNyPatient(String CPR, String dato, String startTidspunkt, String slutTidspunkt, String sundhedsPersonale, String aftalePerson, String notater) {
         getSQLConnection();
-        String write_to_database1 = "INSERT INTO laegedatabasen.patient (CPR, dato,starttid,sluttid,sundhedspersonale,aftaleperson,notater) values(?,?,?,?,?,?,?);";
+        String write_to_database1 = "INSERT INTO s194054.Patient (CPR, dato,starttid,sluttid,sundhedspersonale,aftaleperson,notater) values(?,?,?,?,?,?,?);";
         try {
             preparedStatement = connection.prepareStatement(write_to_database1);
             preparedStatement.setString(1, CPR);
