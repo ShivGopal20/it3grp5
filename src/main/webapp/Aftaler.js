@@ -24,6 +24,7 @@ function AftaleOprettelse(){
 
     if (Dato != null && StartTid != null && Sluttid != null && CPR.length == 10 && SP != null){
         KonsultationsUdfyldning();
+        opretPatient('tabledata');
         Bruger = sessionStorage.getItem("Godkendt_Bruger");
 
         document.getElementById("Dato"+i).innerHTML = Dato;
