@@ -14,6 +14,7 @@ function LoginValidation() {
         } else {
             resp.text().then(data =>
                 Validering(data))
+
         }
 });
 }
