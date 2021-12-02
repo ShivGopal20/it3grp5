@@ -20,7 +20,7 @@ function LoginValidation() {
 }
 
 function Validering(x) {
-    console.log(x);
+    localStorage.setItem("token",x)
     window.location.replace("Home.html")
 }
 

@@ -1,5 +1,7 @@
 package rest;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
@@ -13,25 +15,28 @@ import java.net.URISyntaxException;
 @Produces({MediaType.TEXT_PLAIN})
 public class Login {
     int x=1;
+    Patient p = new Patient();
 
 
     @GET
 
-    public Response loginValidering(@QueryParam("InputBrugernavn") String user, @QueryParam("InputKode") String kode) throws URISyntaxException {
+    public String loginValidering(@QueryParam("InputBrugernavn") String user, @QueryParam("InputKode") String kode) throws URISyntaxException {
 
         SQL sql = new SQL();
 
-        try {
-            for (int i = 1; i <= 100; i++) {
-                sql.getLoginInfo(i);
+        for (int i = 1; i <= 100; i++) {
+            sql.getLoginInfo(i);
+            try {
                 if (user.matches(sql.Brugernavn) && kode.equals(sql.Adgangskode))
                 {
-                    Response Login_Cookie = Response.seeOther(new URI("../Home.html")).cookie(new NewCookie("user", user)).build();
-                    return Login_Cookie;
+                    String token = JWTHandler.generateJwtToken(new User(user, ""));
+                    //Response Login_Cookie = Response.seeOther(new URI("../Home.html")).cookie(new NewCookie("user", user)).build();
+                    return token;
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (URISyntaxException e) {
-            throw new WebApplicationException("Fejl", Response.Status.FORBIDDEN);
+
         }
         return null;
     }

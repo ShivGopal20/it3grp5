@@ -88,7 +88,8 @@ async function opretPatient(form1){
         method:"POST",
         body: JSON.stringify(patientJson),
         headers:{
-            'content-type':"application/json"
+            'content-type':"application/json",
+            'authorization':localStorage.getItem("token")
         }
     })
 
