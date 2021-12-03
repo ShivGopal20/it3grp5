@@ -7,7 +7,6 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-
 import javax.crypto.spec.SecretKeySpec;
 import javax.ws.rs.NotAuthorizedException;
 import java.security.Key;
@@ -32,18 +31,24 @@ public class JWTHandler {
 
     private static Key getKey() {
         System.out.println("getKey");
-
-//Generate a secret key, if there is none specified in the environment - only use fixed key in development for debugging
+        //Genererer en hemmelig nøgle, hvis der ikke er en specificet endnu.
+        // if-betingelse. Aktivieres kun hvis der ikke er en key.
         if (key == null) {
+            // Endnu en if-betingelse. Aktiviseres kun hvis værdien af environmentet "JWT_SECRET_KEY" ikke er null eller tom.
             if (System.getenv("JWT_SECRET_KEY") != null && System.getenv("JWT_SECRET_KEY") != "") {
+                //Væriden af environmentet "JWT_SECRET_KEY" kan så benyttes.
                 String string = System.getenv("JWT_SECRET_KEY");
                 key = new SecretKeySpec(string.getBytes(), 0, string.length(), "HS512");
             } else {
+                // Ellers hvis ikke der var en værdi af environmentet "JWT_SECRET_KEY", så generes der en ny key.
                 key = MacProvider.generateKey(SignatureAlgorithm.HS512);
             }
         }
         return key;
     }
+
+
+
     // Validering af token
     public static User validate(String authentication) {
         System.out.println("validate");
